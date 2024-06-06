@@ -9,7 +9,7 @@
 
 Feature: FinalTest
 
-  Scenario Outline: 01. Error Message
+  Scenario Outline: 01. Error Message is displayed
     Given I am on the home page
     When I enter empty username "<usernameBDD>"
     And I enter password "<passwordBDD>"
@@ -23,7 +23,7 @@ Feature: FinalTest
     Given I am on the home page
     When I click to About Us page
     Then ParaSoft Demo Website appears
-    And I should see www.parasoft.com link
+    And I should see parasoft link
 
   Scenario: 03. Navigate to Home Page on the website
     Given I am on the About Us page

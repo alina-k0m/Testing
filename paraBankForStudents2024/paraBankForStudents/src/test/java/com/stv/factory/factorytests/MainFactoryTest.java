@@ -1,14 +1,10 @@
 package com.stv.factory.factorytests;
 
-
 import com.stv.factory.factorypages.*;
 import org.testng.Assert;
 import org.testng.annotations.Test;
-
 import java.time.Duration;
-
 import static com.stv.framework.core.utils.Waiters.waitForElementVisible;
-
 
 public class MainFactoryTest extends BasicFactoryTest {
 
@@ -27,8 +23,7 @@ public class MainFactoryTest extends BasicFactoryTest {
         Assert.assertEquals(mainFactoryPage.isAdminPanelDisplayed(), true, "Admin panel isn't visible");
     }
 
-
-    @Test(description = "Error Message is displayed", dependsOnMethods = "assertAccountIconIsDisplayed")
+    @Test(description = "Assert that Error Message is displayed")
     public void testErrorWithEmptyUsername() {
         String usernameEnter = "";
         String passwordEnter = "Password123";
@@ -38,10 +33,9 @@ public class MainFactoryTest extends BasicFactoryTest {
         Assert.assertEquals(mainFactoryPage.isErrorMessage(), true, "There is no Error Message");
     }
 
-
-
-
-    @Test(description = "Final Project", dependsOnMethods = "assertAccountIconIsDisplayed")
+    @Test(description = "Assert that About Us page is loaded, here are ParasoftDemo Panel and ParaSoft Link, " +
+            "after click on Logo Home Page is loaded and there is no ParasoftDemo Panel, " +
+            "after double click on Logo Home Page is visible")
     public void testFinalProject() {
         mainFactoryPage.clickOnAboutUs();
         mainFactoryPage.isParasoftLink();
@@ -51,10 +45,6 @@ public class MainFactoryTest extends BasicFactoryTest {
         mainFactoryPage.clickOnLogoParaBankLink();
         Assert.assertEquals(mainFactoryPage.isParasoftDemoClose(), true, "There is no ParasoftDemo");
         mainFactoryPage.doubleClickOnLogoParaBankLink();
-        Assert.assertEquals(mainFactoryPage.isStartPage(), true, "There is not a Star Page");
-
-
+        Assert.assertEquals(mainFactoryPage.isStartPage(), true, "There is not a Home Page");
     }
-
-
 }

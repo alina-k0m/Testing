@@ -38,6 +38,13 @@ public class MainStep extends BasicFactoryTest {
         driver.manage().window().maximize();
     }
 
+    @Given("^I am on the About Us page$")
+    public void isAboutUsPage() {
+        driver.get("https://parabank.parasoft.com/parabank/about.htm");
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
+        driver.manage().window().maximize();
+    }
+
     @When("I enter empty username {string}")
     public void enterEmptyUsernameBDD(String usernameBDD) {
         mainFactoryPage.userNameMBDD(usernameBDD);
@@ -46,6 +53,21 @@ public class MainStep extends BasicFactoryTest {
     @When("I enter password {string}")
     public void enterPasswordBDD(String passwordBDD) {
         mainFactoryPage.passWordMBDD(passwordBDD);
+    }
+
+    @When("^I click to About Us page$")
+    public void aboutUsPage() {
+        mainFactoryPage.clickOnAboutUs();
+    }
+
+    @When("^I click on ParaSoft Logo$")
+    public void clickParasoftLogo() {
+        mainFactoryPage.clickOnLogoParaBankLink();
+    }
+
+    @When("^I click on ParaSoft Logo twice$")
+    public void doubleClickParasoftLogo() {
+        mainFactoryPage.doubleClickOnLogoParaBankLink();
     }
 
     @Then("^I click LogIn$")
@@ -58,31 +80,14 @@ public class MainStep extends BasicFactoryTest {
         mainFactoryPage.isErrorMessage();
     }
 
-    @When("^I click to About Us page$")
-    public void aboutUsPage() {
-        mainFactoryPage.clickOnAboutUs();
-    }
-
     @Then("^ParaSoft Demo Website appears$")
     public void paraSoftDemoPage() {
         mainFactoryPage.isParasoftDemoPage();
     }
 
-    @And("^I should see www.parasoft.com link")
+    @And("^I should see parasoft link")
     public void parasoftLink() {
         mainFactoryPage.isParasoftLink();
-    }
-
-    @Given("^I am on the About Us page$")
-    public void isAboutUsPage() {
-        driver.get("https://parabank.parasoft.com/parabank/about.htm");
-        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
-        driver.manage().window().maximize();
-    }
-
-    @When("^I click on ParaSoft Logo$")
-    public void clickParasoftLogo() {
-        mainFactoryPage.clickOnLogoParaBankLink();
     }
 
     @Then("^I am exactly on the home page$")
@@ -95,16 +100,8 @@ public class MainStep extends BasicFactoryTest {
         mainFactoryPage.isParasoftDemoClose();
     }
 
-
-    @When("^I click on ParaSoft Logo twice$")
-    public void doubleClickParasoftLogo() {
-        mainFactoryPage.doubleClickOnLogoParaBankLink();
-    }
-
-
     @After
     public void afterClass() throws Exception {
         getDriver().quit();
     }
-
 }
